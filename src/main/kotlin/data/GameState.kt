@@ -40,7 +40,7 @@ data class GameState(
         return copy(
             board = newBoard,
             status = status,
-            currentPlayer = if (hasWon) currentPlayer else 3 - currentPlayer   // magic trick for going between numbers 1 and 2
+            currentPlayer = 3 - currentPlayer   // magic trick for going between numbers 1 and 2
         )
     }
 
