@@ -8,12 +8,15 @@ object AppStyle : StyleSheet() {
         flexDirection(FlexDirection.Column)
         alignItems(AlignItems.Center)
         padding(20.px)
+        property("box-sizing", "border-box")
     }
 
     val mainRow by style {
         display(DisplayStyle.Flex)
         gap(30.px)
-        alignItems(AlignItems.FlexStart)
+        alignItems(AlignItems.Center)
+        maxWidth(100.percent)
+        property("box-sizing", "border-box")
 
         media(mediaMaxWidth(768.px)) {
             self style {
@@ -28,23 +31,26 @@ object AppStyle : StyleSheet() {
     }
 
     val board by style {
+        property("--board-gap", "clamp(2px, 1vw, 5px)")
         display(DisplayStyle.Grid)
-        property("grid-template-columns", "repeat(var(--cols), 1fr)")
-        gap(8.px)
+        property("grid-template-columns", "repeat(var(--cols), minmax(0, 60px))")
+        justifyContent(JustifyContent.Center)
+        property("gap", "var(--board-gap)")
         backgroundColor(Color("#2196F3"))
-        padding(20.px)
+        property("padding", "calc(3 * var(--board-gap))")
         borderRadius(10.px)
-        maxWidth(90.vw)
+        maxWidth(100.percent)
+        property("box-sizing", "border-box")
     }
 
     val column by style {
         display(DisplayStyle.Flex)
         flexDirection(FlexDirection.ColumnReverse)
-        gap(8.px)
+        property("gap", "var(--board-gap)")
     }
 
     val cell by style {
-        width(60.px)
+        width(100.percent)
         property("aspect-ratio", "1 / 1")
         backgroundColor(Color("white"))
         borderRadius(50.percent)
