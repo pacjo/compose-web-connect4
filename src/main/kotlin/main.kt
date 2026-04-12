@@ -32,7 +32,7 @@ fun App() {
     Style(AppStyle)
 
     Div({ classes(AppStyle.container) }) {
-        H1 { Text("Connect4") }
+        H1 { Text("Connect4 (or more)") }
 
         GameStatus(gameState)
 
