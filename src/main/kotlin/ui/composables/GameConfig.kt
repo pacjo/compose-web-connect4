@@ -59,7 +59,15 @@ private fun ConfigEntry(text: String, value: Int, onValueChange: (Int) -> Unit) 
     Label {
         Text(text)
         // TODO: set min/max
-        NumberInput(value) {
+        NumberInput(
+            value = value,
+
+            // in some cases it would make sense to make this per value, but since here
+            // all of them are related we can limit it all the same (alternatively we
+            // could do IntRange-s as a companion object in e.g. GameState)
+            min = 4,
+            max = 15
+        ) {
             onInput {
                 val newValue = it.value?.toInt()
                 if (newValue != null) {
