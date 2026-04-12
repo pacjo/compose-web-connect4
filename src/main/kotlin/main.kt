@@ -9,6 +9,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.renderComposable
 import ui.composables.GameBoard
+import ui.composables.GameStatus
 import ui.style.AppStyle
 
 fun main() {
@@ -32,6 +33,7 @@ fun App() {
     Div({ classes(AppStyle.container) }) {
         H1 { Text("Connect4") }
 
+        GameStatus(gameState)
         GameBoard(gameState) { col -> gameState = gameState.dropPiece(col) }
 
         Div {

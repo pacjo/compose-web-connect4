@@ -8,8 +8,8 @@ import kotlinx.serialization.json.Json
 data class GameState(
     val config: GameConfig = GameConfig(),
     val board: Board = Board(config.rows, config.cols),
-    val status: GameStatus = GameStatus.InProgress()
-    val currentPlayer: Int = 1,
+    val status: GameStatus = GameStatus.InProgress("Player 1"),
+    val currentPlayer: Int = 1
 ) {
     fun dropPiece(col: Int): GameState {
         // find first empty row or return early (so no action takes place)
@@ -30,14 +30,17 @@ data class GameState(
             }
         }
 
+        val playerName = "Player $currentPlayer"
+        val status = when {
+            hasWon -> GameStatus.Win(playerName)
+            isFull -> GameStatus.Draw
+            else -> GameStatus.InProgress(playerName)
+        }
+
         return copy(
             board = newBoard,
-            status = when {
-                hasWon -> GameStatus.Win("Player $currentPlayer")
-                isFull -> GameStatus.Draw()
-                else -> GameStatus.InProgress()
-            }
-            currentPlayer = if (hasWon) currentPlayer else 3 - currentPlayer,   // magic trick for going between numbers 1 and 2
+            status = status,
+            currentPlayer = if (hasWon) currentPlayer else 3 - currentPlayer   // magic trick for going between numbers 1 and 2
         )
     }
 

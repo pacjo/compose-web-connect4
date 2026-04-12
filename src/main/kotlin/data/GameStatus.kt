@@ -6,10 +6,10 @@ import kotlinx.serialization.Serializable
 sealed class GameStatus {
 
     @Serializable
-    class InProgress : GameStatus()
+    class InProgress(val playerName: String) : GameStatus()
 
     @Serializable
-    class Draw : GameStatus()
+    object Draw : GameStatus()
 
     @Serializable
     class Win(val playerName: String) : GameStatus()

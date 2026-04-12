@@ -10,6 +10,10 @@ object AppStyle : StyleSheet() {
         padding(20.px)
     }
 
+    val status by style {
+        marginBottom(20.px)
+    }
+
     val board by style {
         display(DisplayStyle.Grid)
         property("grid-template-columns", "repeat(var(--cols), 1fr)")
