@@ -12,6 +12,10 @@ data class GameState(
     val currentPlayer: Int = 1
 ) {
     fun dropPiece(col: Int): GameState {
+        // don't allow moves after win/draw
+        if (status !is GameStatus.InProgress)
+            return this
+
         // find first empty row or return early (so no action takes place)
         val row = (config.rows - 1 downTo 0)
             .firstOrNull { board[it, col] == Cell.NONE } ?: return this
