@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -18,6 +19,8 @@ kotlin {
                 // TODO: export to libs.versions.toml
                 implementation("org.jetbrains.compose.html:html-core:1.10.3")
                 implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
+
+                implementation(libs.kotlin.serialization.json)
             }
         }
     }
