@@ -34,17 +34,17 @@ data class GameState(
             }
         }
 
-        val playerName = "Player $currentPlayer"
-        val status = when {
-            hasWon -> GameStatus.Win(playerName)
+        val newPlayer = 3 - currentPlayer       // magic trick for going between numbers 1 and 2
+        val newStatus = when {
+            hasWon -> GameStatus.Win("Player $currentPlayer")
             isFull -> GameStatus.Draw
-            else -> GameStatus.InProgress(playerName)
+            else -> GameStatus.InProgress("Player $newPlayer")
         }
 
         return copy(
             board = newBoard,
-            status = status,
-            currentPlayer = 3 - currentPlayer   // magic trick for going between numbers 1 and 2
+            status = newStatus,
+            currentPlayer = newPlayer
         )
     }
 
