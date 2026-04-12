@@ -23,5 +23,14 @@ kotlin {
                 implementation(libs.kotlin.serialization.json)
             }
         }
+
+        val jsTest by getting {
+            kotlin.srcDir("src/test/kotlin")
+
+            dependencies {
+                implementation(kotlin("test"))
+            }
+
+        }
     }
 }
