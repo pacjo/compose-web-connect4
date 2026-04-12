@@ -45,7 +45,7 @@ object AppStyle : StyleSheet() {
 
     val cell by style {
         width(60.px)
-        height(60.px)
+        property("aspect-ratio", "1 / 1")
         backgroundColor(Color("white"))
         borderRadius(50.percent)
         display(DisplayStyle.Flex)
@@ -58,10 +58,19 @@ object AppStyle : StyleSheet() {
         }
     }
 
+    val dropAnimation by keyframes {
+        0.percent { property("transform", "translateY(-600%)") }
+        100.percent { property("transform", "translateY(0)") }
+    }
+
     val piece by style {
         width(80.percent)
         height(80.percent)
         borderRadius(50.percent)
+        animation(dropAnimation) {
+            duration(0.4.s)
+            timingFunction(AnimationTimingFunction.EaseOut)
+        }
     }
 
     val cellRed by style {
