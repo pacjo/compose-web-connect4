@@ -58,13 +58,12 @@ fun GameConfig(
 private fun ConfigEntry(text: String, value: Int, onValueChange: (Int) -> Unit) {
     Label {
         Text(text)
-        // TODO: set min/max
         NumberInput(
             value = value,
 
             // in some cases it would make sense to make this per value, but since here
             // all of them are related we can limit it all the same (alternatively we
-            // could do IntRange-s as a companion object in e.g. GameState)
+            // could do IntRange-s as a companion object in e.g. GameConfig)
             min = 4,
             max = 15
         ) {
