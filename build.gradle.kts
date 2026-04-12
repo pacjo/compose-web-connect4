@@ -16,10 +16,8 @@ kotlin {
             resources.srcDir("src/main/resources")
 
             dependencies {
-                // TODO: export to libs.versions.toml
-                implementation("org.jetbrains.compose.html:html-core:1.10.3")
-                implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
-
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.html.core)
                 implementation(libs.kotlin.serialization.json)
             }
         }
@@ -28,7 +26,7 @@ kotlin {
             kotlin.srcDir("src/test/kotlin")
 
             dependencies {
-                implementation(kotlin("test"))
+                implementation(libs.kotlin.test)
             }
 
         }
