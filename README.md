@@ -14,3 +14,4 @@
 ## Notes
 
 - `NumberInput` doesn't seem to respect min/max values on mobile, but works on desktop
+- initial project structure based on [compose-multiplatform-html-library template](https://github.com/JetBrains/compose-multiplatform-html-library-template)
